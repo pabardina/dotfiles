@@ -213,10 +213,12 @@ bar {
         inactive_workspace #333333 #222222 #888888
         urgent_workspace   #aa0000 #990000 #ffffff
         }        
-        status_command i3status -c ~/.i3/i3status.conf
+        #status_command i3status -c ~/.i3/i3status.conf
+        status_command py3status -i ~/.py3status/ -c ~/.py3status/config
         position top
+#        tray_output primary
 }
 
 exec --no-startup-id feh --bg-scale ~/Documents/wallpaper.jpg
 exec --no-startup-id nm-applet
-
+exec --no-startup-id dropbox start
