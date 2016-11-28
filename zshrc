@@ -85,11 +85,11 @@ source $ZSH/oh-my-zsh.sh
 #
 
 export PATH="$PATH:/usr/local/bin"
+. /etc/profile.d/vte-2.91.sh
+source ~/.profile
 
 export WORKON_HOME=$HOME/.virtualenvs
 #export PROJECT_HOME=$HOME/Devel
 source /usr/local/bin/virtualenvwrapper.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export PATH=$PATH:/usr/local/go/bin
-export GOPATH=$HOME/golang
