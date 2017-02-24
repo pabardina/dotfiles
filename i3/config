@@ -11,42 +11,22 @@
 
 set $mod Mod4
 
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-# Before i3 v4.8, we used to recommend this one as the default:
-font pango:Monospace 8
-# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# The font above is very space-efficient, that is, it looks good, sharp and
-# clear in small sizes. However, its unicode glyph coverage is limited, the old
-# X core fonts rendering does not support right-to-left and this being a bitmap
-# font, it doesn’t scale on retina/hidpi displays.
+font pango:Monospace 10
 
-# Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# start a terminal
-
-bindsym $mod+Return exec --no-startup-id terminator
+bindsym $mod+Return exec --no-startup-id termite
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 for_window [class="Skype"] floating enable
 
-for_window [instance="terminator" title="Terminator-Floating"] floating enable
-bindsym $mod+Shift+Return exec terminator -T "Terminator-Floating"
+for_window [instance="termite" title="Termite-Floating"] floating enable
+bindsym $mod+Shift+Return exec termite -t "Termite-Floating"
 
 # lock screen
-bindsym $mod+l exec i3lock -c 111111
-
-# start dmenu (a program launcher)
-# bindsym $mod+d exec dmenu_run
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+l exec ~/.config/i3/lock.sh
 
 # change focus
 bindsym $mod+j focus left
@@ -135,27 +115,27 @@ bindsym $mod+Shift+agrave move container to workspace 10
 
 # Screenshots
 # Screenshot fullscreen
-bindsym Print exec "scrot -q 100 '/home/pab/screenshots/%Y-%m-%d-%H-%M-%S_$wx$h.png' -e 'xclip -i -selection clipboard'"
+bindsym Print exec "scrot -q 100 '/home/pab/Screenshots/%Y-%m-%d-%H-%M-%S_$wx$h.png' -e 'xclip -i -selection clipboard'"
 # Screenshot with selection
-bindsym $mod+Print exec "sleep 0.2; scrot -q 100 -s '/home/pab/screenshots/%Y-%m-%d-%H-%M-%S_$wx$h.png' -e 'xclip -i -selection clipboard'"
+bindsym $mod+Print exec "sleep 0.2; scrot -q 100 -s '/home/pab/Screenshots/%Y-%m-%d-%H-%M-%S_$wx$h.png' -e 'xclip -i -selection clipboard'"
 # Screenshot current focused window
-bindsym Shift+Print exec "scrot -q 100 -u '/home/pab/screenshots/%Y-%m-%d-%H-%M-%S_$wx$h.png' -e 'xclip -i -selection clipboard'"
+bindsym Shift+Print exec "scrot -q 100 -u '/home/pab/Screenshots/%Y-%m-%d-%H-%M-%S_$wx$h.png' -e 'xclip -i -selection clipboard'"
 
 
 # volume
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 1 +5%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume 1 -5% 
-
-bindsym XF86AudioMute exec pactl set-sink-mute 1 toggle
-#bindsym XF86AudioMicMute exec pactl set-source-mute 2 toggle # mute mic
-bindsym $mod+F4 exec pactl set-source-mute 2 toggle # mute mic
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5% 
+bindsym $mod+F4 exec pactl set-source-mute 1 toggle # mute mic
 
 # screen brightness controls
 bindsym XF86MonBrightnessUp exec sudo light -A 5 # increase screen brightness
 bindsym XF86MonBrightnessDown exec sudo light -U 5 # decrease screen
 
 # browser 
-bindsym $mod+b exec firefox
+bindsym $mod+b exec google-chrome
+
+# file manager
+bindsym $mod+t exec thunar
 
 
 # reload the configuration file
@@ -172,54 +152,33 @@ bindsym $mod+Tab exec rofi -show window
 bindsym $mod+Shift+g exec echo "" | rofi -dmenu -p "Search:" | xargs -I{} xdg-open https://www.google.de/search?q={}
 
 
+focus_follows_mouse no
+
+
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
         bindsym j resize shrink width 10 px or 10 ppt
         bindsym k resize grow height 10 px or 10 ppt
         bindsym l resize shrink height 10 px or 10 ppt
         bindsym m resize grow width 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
         bindsym Down resize grow height 10 px or 10 ppt
         bindsym Up resize shrink height 10 px or 10 ppt
         bindsym Right resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
 
+
 bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-bar {
-    colors {
-        # Whole color settings
-        background #000000
-        statusline #ffffff
-        separator  #666666
 
-        # Type             border  background font
-        focused_workspace  #008fff #007fff #ffffff
-        active_workspace   #333333 #5f676a #ffffff
-        inactive_workspace #333333 #222222 #888888
-        urgent_workspace   #aa0000 #990000 #ffffff
-        }        
-        #status_command i3status -c ~/.i3/i3status.conf
-        status_command py3status -i ~/.py3status/ -c ~/.py3status/config
-        position top
-#        tray_output primary
-}
-
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec --no-startup-id feh --bg-scale ~/Documents/wallpaper.jpg
 exec --no-startup-id nm-applet
-exec --no-startup-id dropbox start
+exec --no-startup-id redshif-gtk
 #exec --no-startup-id seafile-applet
