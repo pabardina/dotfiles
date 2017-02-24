@@ -53,6 +53,8 @@ ZSH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git, ssh-agent)
 
+zstyle :omz:plugins:ssh-agent identities id_rsa pab_old_id_rsa
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
