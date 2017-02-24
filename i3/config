@@ -137,6 +137,10 @@ bindsym $mod+b exec google-chrome
 # file manager
 bindsym $mod+t exec thunar
 
+# language fr
+bindsym $mod+Shift+o exec setxkbmap fr -option
+# language us
+bindsym $mod+Shift+p exec setxkbmap us -option compose:ralt
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -180,5 +184,5 @@ bindsym $mod+r mode "resize"
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec --no-startup-id feh --bg-scale ~/Documents/wallpaper.jpg
 exec --no-startup-id nm-applet
-exec --no-startup-id redshif-gtk
+exec --no-startup-id redshift-gtk
 #exec --no-startup-id seafile-applet
