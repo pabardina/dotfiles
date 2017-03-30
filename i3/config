@@ -87,7 +87,7 @@ set $tag4 "4: social"
 set $tag5 "5: music"
 set $tag6 "6: extra"
 
-# switch to workspace
+# switch to workspace fr
 bindsym $mod+ampersand workspace $tag1
 bindsym $mod+eacute workspace $tag2
 bindsym $mod+quotedbl workspace $tag3
@@ -98,6 +98,19 @@ bindsym $mod+egrave workspace 7
 bindsym $mod+underscore workspace 8
 bindsym $mod+ccedilla workspace 9
 bindsym $mod+agrave workspace 10
+
+# switch to workspace us
+bindsym $mod+1 workspace $tag1
+bindsym $mod+2 workspace $tag2
+bindsym $mod+3 workspace $tag3
+bindsym $mod+4 workspace $tag4
+bindsym $mod+5 workspace $tag5
+bindsym $mod+6 workspace $tag6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $tag1
@@ -179,7 +192,6 @@ mode "resize" {
 
 
 bindsym $mod+r mode "resize"
-
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec --no-startup-id feh --bg-scale ~/Documents/wallpaper.jpg

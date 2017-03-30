@@ -54,6 +54,7 @@ set incsearch
 set ignorecase
 set smartcase
 set showmatch
+set mouse-=a
 map <leader><space> :let @/=''<cr> " clear search
 
 

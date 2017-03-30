@@ -99,7 +99,10 @@ alias vi="nvim"
 alias vim="nvim"
 
 source ~/.oh-my-zsh/plugins/git/git.plugin.zsh
+. /usr/share/autojump/autojump.sh
+
+export GOPATH=$HOME/gocode
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-
