@@ -145,7 +145,7 @@ bindsym XF86MonBrightnessUp exec sudo light -A 5 # increase screen brightness
 bindsym XF86MonBrightnessDown exec sudo light -U 5 # decrease screen
 
 # browser 
-bindsym $mod+b exec google-chrome
+bindsym $mod+b exec chromium --enable-remote-extensions
 
 # file manager
 bindsym $mod+t exec thunar
