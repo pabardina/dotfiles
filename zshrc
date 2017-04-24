@@ -98,6 +98,9 @@ fi
 alias vi="nvim"
 alias vim="nvim"
 
+eval "$(direnv hook zsh)"
+
+
 source ~/.oh-my-zsh/plugins/git/git.plugin.zsh
 . /usr/share/autojump/autojump.sh
 
@@ -106,3 +109,6 @@ export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+alias dokku='$HOME/.dokku/contrib/dokku_client.sh'
+
