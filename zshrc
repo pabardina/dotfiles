@@ -8,7 +8,7 @@ ZSH_THEME="robbyrussell"
 
 
 
-plugins=(git ssh-agent)
+plugins=(git)
 
 
 source $ZSH/oh-my-zsh.sh
