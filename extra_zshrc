@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# Aliases
+alias vi="nvim"
+alias vim="nvim"
+
+alias dokku='$HOME/.dokku/contrib/dokku_client.sh'
+alias pbcopy="xsel --clipboard --input"
+
+# export
+
+export GOPATH=$HOME/gocode
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+
+export TERM=xterm
+
+. /usr/share/autojump/autojump.sh
+
+# ssh-keygen
+export $(gnome-keyring-daemon -s)
+
+
+if [[ $TERM == xterm ]]; then
+	  . /etc/profile.d/vte-2.91.sh
+    	__vte_osc7
+fi
+
+# Fzf
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

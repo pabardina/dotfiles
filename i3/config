@@ -194,7 +194,9 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-exec --no-startup-id feh --bg-scale ~/Documents/wallpaper.jpg
+exec --no-startup-id feh --bg-scale ~/wallpaper.jpg
 exec --no-startup-id nm-applet
 exec --no-startup-id redshift-gtk
+#exec --no-startup-id /usr/lib/gnome-settings-daemon/gnome-settings-daemon
+
 #exec --no-startup-id seafile-applet
